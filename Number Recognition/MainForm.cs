@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -33,16 +32,33 @@ namespace Number_Recognition
 
         private void iterationButton_Click(object sender, EventArgs e)
         {
-            string input = Interaction.InputBox("Input Max Trainings", "InputForm");
-
             try
             {
-                if(int.Parse(input) < 0)
+                string input = "0";
+
+                // Opens an input box
+                using (var inputForm = new InputForm())
                 {
-                    MessageBox.Show("Number must be positive!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    var result = inputForm.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        input = inputForm.ReturnInput;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+
+                // Checks if input is negative
+                if (int.Parse(input) < 0)
+                {
+                    MessageBox.Show("Input must be positive!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
+                // Enables/Disables decrement button
                 if(int.Parse(input) > 0)
                     decrementButton.Enabled = true;
                 else
@@ -52,7 +68,7 @@ namespace Number_Recognition
             }
             catch(FormatException)
             {
-                MessageBox.Show("Please enter a number!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Input mush be an integer!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

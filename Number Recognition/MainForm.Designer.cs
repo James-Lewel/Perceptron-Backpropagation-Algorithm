@@ -31,7 +31,7 @@
             this.addButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
             this.samplePictureBox = new System.Windows.Forms.PictureBox();
-            this.borderSamplePictureBox = new System.Windows.Forms.PictureBox();
+            this.borderMaroon1 = new System.Windows.Forms.PictureBox();
             this.resetButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -48,12 +48,25 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.outputLabel = new System.Windows.Forms.Label();
+            this.stripeWhite1 = new System.Windows.Forms.PictureBox();
+            this.stripeWhite2 = new System.Windows.Forms.PictureBox();
+            this.stripeMaroon1 = new System.Windows.Forms.PictureBox();
+            this.stripeMaroon2 = new System.Windows.Forms.PictureBox();
+            this.stripeMaroon3 = new System.Windows.Forms.PictureBox();
+            this.borderMaroon2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.samplePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borderSamplePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borderMaroon1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeWhite1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeWhite2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeMaroon1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeMaroon2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeMaroon3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borderMaroon2)).BeginInit();
             this.SuspendLayout();
             // 
             // addButton
@@ -80,7 +93,7 @@
             // 
             // samplePictureBox
             // 
-            this.samplePictureBox.BackColor = System.Drawing.SystemColors.Control;
+            this.samplePictureBox.BackColor = System.Drawing.SystemColors.ControlDark;
             this.samplePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.samplePictureBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.samplePictureBox.Location = new System.Drawing.Point(22, 21);
@@ -89,16 +102,15 @@
             this.samplePictureBox.TabIndex = 2;
             this.samplePictureBox.TabStop = false;
             // 
-            // borderSamplePictureBox
+            // borderMaroon1
             // 
-            this.borderSamplePictureBox.BackColor = System.Drawing.Color.Maroon;
-            this.borderSamplePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.borderSamplePictureBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.borderSamplePictureBox.Location = new System.Drawing.Point(17, 16);
-            this.borderSamplePictureBox.Name = "borderSamplePictureBox";
-            this.borderSamplePictureBox.Size = new System.Drawing.Size(256, 256);
-            this.borderSamplePictureBox.TabIndex = 2;
-            this.borderSamplePictureBox.TabStop = false;
+            this.borderMaroon1.BackColor = System.Drawing.Color.Maroon;
+            this.borderMaroon1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.borderMaroon1.Location = new System.Drawing.Point(17, 16);
+            this.borderMaroon1.Name = "borderMaroon1";
+            this.borderMaroon1.Size = new System.Drawing.Size(256, 256);
+            this.borderMaroon1.TabIndex = 2;
+            this.borderMaroon1.TabStop = false;
             // 
             // resetButton
             // 
@@ -120,7 +132,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(17, 278);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(256, 100);
+            this.groupBox1.Size = new System.Drawing.Size(256, 105);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buttons";
@@ -132,7 +144,7 @@
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Location = new System.Drawing.Point(307, 16);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(400, 256);
+            this.groupBox2.Size = new System.Drawing.Size(400, 251);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Options";
@@ -149,7 +161,7 @@
             this.panel1.Controls.Add(this.outputLabel);
             this.panel1.Location = new System.Drawing.Point(6, 21);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(388, 229);
+            this.panel1.Size = new System.Drawing.Size(388, 224);
             this.panel1.TabIndex = 0;
             // 
             // iterationButton
@@ -197,7 +209,7 @@
             this.groupBox3.Controls.Add(this.trainButton);
             this.groupBox3.Controls.Add(this.testButton);
             this.groupBox3.Controls.Add(this.exportButton);
-            this.groupBox3.Location = new System.Drawing.Point(3, 107);
+            this.groupBox3.Location = new System.Drawing.Point(3, 102);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(378, 117);
             this.groupBox3.TabIndex = 4;
@@ -208,9 +220,9 @@
             this.ownerLabel.AutoSize = true;
             this.ownerLabel.Location = new System.Drawing.Point(251, 67);
             this.ownerLabel.Name = "ownerLabel";
-            this.ownerLabel.Size = new System.Drawing.Size(73, 16);
+            this.ownerLabel.Size = new System.Drawing.Size(107, 16);
             this.ownerLabel.TabIndex = 1;
-            this.ownerLabel.Text = "By : JimBoi";
+            this.ownerLabel.Text = "By : JimBoi Tech";
             // 
             // createButton
             // 
@@ -282,27 +294,115 @@
             this.outputLabel.TabIndex = 3;
             this.outputLabel.Text = "Output : ";
             // 
+            // stripeWhite1
+            // 
+            this.stripeWhite1.BackColor = System.Drawing.SystemColors.Control;
+            this.stripeWhite1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.stripeWhite1.Location = new System.Drawing.Point(-8, 299);
+            this.stripeWhite1.Name = "stripeWhite1";
+            this.stripeWhite1.Size = new System.Drawing.Size(750, 30);
+            this.stripeWhite1.TabIndex = 2;
+            this.stripeWhite1.TabStop = false;
+            // 
+            // stripeWhite2
+            // 
+            this.stripeWhite2.BackColor = System.Drawing.SystemColors.Control;
+            this.stripeWhite2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.stripeWhite2.Location = new System.Drawing.Point(-8, 335);
+            this.stripeWhite2.Name = "stripeWhite2";
+            this.stripeWhite2.Size = new System.Drawing.Size(750, 30);
+            this.stripeWhite2.TabIndex = 2;
+            this.stripeWhite2.TabStop = false;
+            // 
+            // stripeMaroon1
+            // 
+            this.stripeMaroon1.BackColor = System.Drawing.Color.Maroon;
+            this.stripeMaroon1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.stripeMaroon1.Location = new System.Drawing.Point(-8, 109);
+            this.stripeMaroon1.Name = "stripeMaroon1";
+            this.stripeMaroon1.Size = new System.Drawing.Size(328, 30);
+            this.stripeMaroon1.TabIndex = 2;
+            this.stripeMaroon1.TabStop = false;
+            // 
+            // stripeMaroon2
+            // 
+            this.stripeMaroon2.BackColor = System.Drawing.Color.Maroon;
+            this.stripeMaroon2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.stripeMaroon2.Location = new System.Drawing.Point(-8, 145);
+            this.stripeMaroon2.Name = "stripeMaroon2";
+            this.stripeMaroon2.Size = new System.Drawing.Size(330, 30);
+            this.stripeMaroon2.TabIndex = 2;
+            this.stripeMaroon2.TabStop = false;
+            // 
+            // stripeMaroon3
+            // 
+            this.stripeMaroon3.BackColor = System.Drawing.Color.Maroon;
+            this.stripeMaroon3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.stripeMaroon3.Location = new System.Drawing.Point(-8, 181);
+            this.stripeMaroon3.Name = "stripeMaroon3";
+            this.stripeMaroon3.Size = new System.Drawing.Size(328, 30);
+            this.stripeMaroon3.TabIndex = 2;
+            this.stripeMaroon3.TabStop = false;
+            // 
+            // borderMaroon2
+            // 
+            this.borderMaroon2.BackColor = System.Drawing.Color.Maroon;
+            this.borderMaroon2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.borderMaroon2.Location = new System.Drawing.Point(299, 16);
+            this.borderMaroon2.Name = "borderMaroon2";
+            this.borderMaroon2.Size = new System.Drawing.Size(418, 256);
+            this.borderMaroon2.TabIndex = 2;
+            this.borderMaroon2.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("OCR A Extended", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(311, 297);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(393, 35);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Number Recognition";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Goldenrod;
             this.ClientSize = new System.Drawing.Size(732, 403);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.samplePictureBox);
-            this.Controls.Add(this.borderSamplePictureBox);
+            this.Controls.Add(this.borderMaroon1);
+            this.Controls.Add(this.stripeWhite2);
+            this.Controls.Add(this.stripeWhite1);
+            this.Controls.Add(this.borderMaroon2);
+            this.Controls.Add(this.stripeMaroon2);
+            this.Controls.Add(this.stripeMaroon3);
+            this.Controls.Add(this.stripeMaroon1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(750, 450);
+            this.MinimumSize = new System.Drawing.Size(750, 450);
             this.Name = "mainForm";
-            this.Text = "Number Recognition";
+            this.Text = "Easter Egg 🥚";
             ((System.ComponentModel.ISupportInitialize)(this.samplePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borderSamplePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borderMaroon1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeWhite1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeWhite2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeMaroon1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeMaroon2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stripeMaroon3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borderMaroon2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -311,7 +411,7 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.PictureBox samplePictureBox;
-        private System.Windows.Forms.PictureBox borderSamplePictureBox;
+        private System.Windows.Forms.PictureBox borderMaroon1;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -328,6 +428,13 @@
         private System.Windows.Forms.Button incrementButton;
         private System.Windows.Forms.Button decrementButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox stripeWhite1;
+        private System.Windows.Forms.PictureBox stripeWhite2;
+        private System.Windows.Forms.PictureBox stripeMaroon1;
+        private System.Windows.Forms.PictureBox stripeMaroon2;
+        private System.Windows.Forms.PictureBox stripeMaroon3;
+        private System.Windows.Forms.PictureBox borderMaroon2;
+        private System.Windows.Forms.Label label2;
     }
 }
 
