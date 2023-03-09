@@ -236,45 +236,48 @@ namespace Backpropagation
 				}
 			}// end of streamwriter
 
-            using (StreamWriter streamWriter = new StreamWriter(path + weightsInputFile))
+            #region Separates dataFile into four smaller datas
             {
-                // saving the weights of the input layer
-                for (int x = 0; x < inputNeurons.Length; x++)
+                using (StreamWriter streamWriter = new StreamWriter(path + weightsInputFile))
                 {
-                    for (int y = 0; y < hiddenNeurons.Length; y++)
+                    // saving the weights of the input layer
+                    for (int x = 0; x < inputNeurons.Length; x++)
                     {
-                        streamWriter.WriteLine(inputNeurons[x].getWeight(y));
+                        for (int y = 0; y < hiddenNeurons.Length; y++)
+                        {
+                            streamWriter.WriteLine(inputNeurons[x].getWeight(y));
+                        }
                     }
                 }
-            }
 
-            using (StreamWriter streamWriter = new StreamWriter(path + weightsHiddenFile))
-            {
-                //saving the wieghts of the hidden layer
-                for (int x = 0; x < hiddenNeurons.Length; x++)
+                using (StreamWriter streamWriter = new StreamWriter(path + weightsHiddenFile))
                 {
-                    for (int y = 0; y < outputNeurons.Length; y++)
+                    //saving the wieghts of the hidden layer
+                    for (int x = 0; x < hiddenNeurons.Length; x++)
                     {
-                        streamWriter.WriteLine(hiddenNeurons[x].getWeight(y));
+                        for (int y = 0; y < outputNeurons.Length; y++)
+                        {
+                            streamWriter.WriteLine(hiddenNeurons[x].getWeight(y));
+                        }
                     }
                 }
-            }
 
-            using (StreamWriter streamWriter = new StreamWriter(path + biasHiddenFile))
-            {
-                // saving hidden layer bias
-                for (int x = 0; x < hiddenNeurons.Length; x++)
+                using (StreamWriter streamWriter = new StreamWriter(path + biasHiddenFile))
                 {
-                    streamWriter.WriteLine(hiddenNeurons[x].getBias());
+                    // saving hidden layer bias
+                    for (int x = 0; x < hiddenNeurons.Length; x++)
+                    {
+                        streamWriter.WriteLine(hiddenNeurons[x].getBias());
+                    }
                 }
-            }
 
-            using (StreamWriter streamWriter = new StreamWriter(path + biasOutputFile))
-            {
-                // saving output layer bias
-                for (int x = 0; x < outputNeurons.Length; x++)
+                using (StreamWriter streamWriter = new StreamWriter(path + biasOutputFile))
                 {
-                    streamWriter.WriteLine(outputNeurons[x].getBias());
+                    // saving output layer bias
+                    for (int x = 0; x < outputNeurons.Length; x++)
+                    {
+                        streamWriter.WriteLine(outputNeurons[x].getBias());
+                    }
                 }
             }
         }

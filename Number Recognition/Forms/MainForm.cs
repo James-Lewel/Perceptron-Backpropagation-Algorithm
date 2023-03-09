@@ -4,7 +4,6 @@ using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Number_Recognition
 {
@@ -176,13 +175,14 @@ namespace Number_Recognition
         {
             new Thread(()=>
             {
-                while (int.Parse(iterationButton.Text) - 1 > 0)
+                int trainingLimit = int.Parse(iterationButton.Text);
+                for(int i = 0; i < trainingLimit; i++)
                 {
-                    for (int i = 0; i < height; i++)
+                    for (int j = 0; j < height; j++)
                     {
-                        for (int j = 0; j < width; j++)
+                        for (int k = 0; k < width; k++)
                         {
-                            neuralNet.setInputs(j, num[i,j]);
+                            neuralNet.setInputs(j * width + k, num[j,k]);
                         }
                     }
                 }
