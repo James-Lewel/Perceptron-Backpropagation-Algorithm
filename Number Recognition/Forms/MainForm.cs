@@ -182,7 +182,7 @@ namespace Number_Recognition
                     {
                         for (int k = 0; k < width; k++)
                         {
-                            neuralNet.setInputs(j * width + k, num[j,k]);
+                            neuralNet.setInputs(k, num[j,k]);
                         }
                     }
                 }
@@ -190,7 +190,46 @@ namespace Number_Recognition
                 MessageBox.Show("Finish");
             }).Start();
 
-            neuralNet.setDesiredOutput(0, 9);
+            if (isZero(num))
+            {
+                neuralNet.setDesiredOutput(0, 5);
+            }
+            else if(isOne(num))
+            {
+                neuralNet.setDesiredOutput(1, 5);
+            }
+            else if (isTwo(num))
+            {
+                neuralNet.setDesiredOutput(2, 5);
+            }
+            else if (isThree(num))
+            {
+                neuralNet.setDesiredOutput(3, 5);
+            }
+            else if (isFour(num))
+            {
+                neuralNet.setDesiredOutput(4, 5);
+            }
+            else if (isFive(num))
+            {
+                neuralNet.setDesiredOutput(5, 5);
+            }
+            else if (isSix(num))
+            {
+                neuralNet.setDesiredOutput(6, 5);
+            }
+            else if (isSeven(num))
+            {
+                neuralNet.setDesiredOutput(7, 5);
+            }
+            else if (isEight(num))
+            {
+                neuralNet.setDesiredOutput(8, 5);
+            }
+            else
+            {
+                neuralNet.setDesiredOutput(9, 5);
+            }
             neuralNet.learn();
         }
 
@@ -204,7 +243,20 @@ namespace Number_Recognition
                 }
             }
             neuralNet.run();
-            outputLabel.Text = "Output : " + neuralNet.getOuputData(0);
+
+            double max = 0;
+            int index = 0;
+
+            for(int i = 0; i < 10; i++)
+            {
+                if (max < neuralNet.getOuputData(i))
+                {
+                    max = neuralNet.getOuputData(i);
+                    index = i;
+                }
+            }
+
+            outputLabel.Text = "Output : " + index; //neuralNet.getOuputData(index);
         }
 
         private void importButton_Click(object sender, EventArgs e)
@@ -229,5 +281,299 @@ namespace Number_Recognition
             neuralNet.saveWeights(basePath + folderName);
             MessageBox.Show("Data Exported");
         }
+
+        public bool isZero(int [,] input)
+        {
+            int counter = 0;
+            int[,] zero = new int[,]
+                {{ 0, 1, 1, 1, 0},
+                { 1, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 0, 1, 1, 1, 0}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == zero[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+        public bool isOne(int[,] input)
+        {
+            int counter = 0;
+            int[,] one = new int[,]
+                {{ 0, 1, 1, 0, 0},
+                { 0, 0, 1, 0, 0},
+                { 0, 0, 1, 0, 0},
+                { 0, 0, 1, 0, 0},
+                { 0, 0, 1, 0, 0},
+                { 0, 0, 1, 0, 0},
+                { 0, 1, 1, 1, 0}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == one[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+        public bool isTwo(int[,] input)
+        {
+            int counter = 0;
+            int[,] two = new int[,]
+                {{ 0, 1, 1, 1, 0},
+                { 1, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 0, 0, 0, 0, 1},
+                { 0, 1, 1, 1, 0},
+                { 1, 0, 0, 0, 0},
+                { 0, 1, 1, 1, 1}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == two[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+        public bool isThree(int[,] input)
+        {
+            int counter = 0;
+            int[,] three = new int[,]
+                {{ 0, 1, 1, 1, 0},
+                { 1, 0, 0, 0, 1},
+                { 0, 0, 0, 0, 1},
+                { 0, 0, 1, 1, 0},
+                { 0, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 0, 1, 1, 1, 0}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == three[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+        public bool isFour(int[,] input)
+        {
+            int counter = 0;
+            int[,] four = new int[,]
+                {{ 0, 0, 0, 1, 0},
+                { 0, 0, 1, 1, 0},
+                { 0, 1, 0, 1, 0},
+                { 1, 0, 0, 1, 0},
+                { 1, 1, 1, 1, 1},
+                { 0, 0, 0, 1, 0},
+                { 0, 0, 0, 1, 0}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == four[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+        public bool isFive(int[,] input)
+        {
+            int counter = 0;
+            int[,] five = new int[,]
+                {{ 1, 1, 1, 1, 1},
+                { 1, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 0},
+                { 0, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 0, 1, 1, 1, 0}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == five[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+        public bool isSix(int[,] input)
+        {
+            int counter = 0;
+            int[,] six = new int[,]
+                {{ 0, 1, 1, 1, 0},
+                { 1, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 0},
+                { 1, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 0, 1, 1, 1, 0}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == six[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+        public bool isSeven(int[,] input)
+        {
+            int counter = 0;
+            int[,] seven = new int[,]
+                 {{ 1, 1, 1, 1, 1},
+                 { 1, 0, 0, 0, 1},
+                 { 1, 0, 0, 1, 0},
+                 { 0, 0, 0, 1, 0},
+                 { 0, 0, 1, 0, 0},
+                 { 0, 0, 1, 0, 0},
+                 { 0, 0, 1, 0, 0}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == seven[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+        public bool isEight(int[,] input)
+        {
+            int counter = 0;
+            int[,] eight = new int[,]
+                 {{ 0, 1, 1, 1, 0},
+                 { 1, 0, 0, 0, 1},
+                 { 1, 0, 0, 0, 1},
+                 { 0, 1, 1, 1, 0},
+                 { 1, 0, 0, 0, 1},
+                 { 1, 0, 0, 0, 1},
+                 { 0, 1, 1, 1, 0}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == eight[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+
+
+        public bool isNine(int[,] input)
+        {
+            int counter = 0;
+            int[,] nine = new int[,]
+                {{ 0, 1, 1, 1, 0},
+                { 1, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 0, 1, 1, 1, 1},
+                { 0, 0, 0, 0, 1},
+                { 1, 0, 0, 0, 1},
+                { 0, 1, 1, 1, 0}};
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (input[i, j] == nine[i, j])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+
+       
     }
 }
