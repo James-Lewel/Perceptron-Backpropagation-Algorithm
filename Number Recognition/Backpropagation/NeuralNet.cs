@@ -194,13 +194,15 @@ namespace Backpropagation
 		}
 		public void saveWeights(String path)
         {
+			// Stores all data
 			string dataFile = "data.csv";
+
+			// Stores separated data
 			string weightsInputFile = "weights_inputlayer.csv";
 			string weightsHiddenFile = "weights_hiddenlayer.csv";
 			string biasHiddenFile = "bias_hiddenlayer.csv";
 			string biasOutputFile = "bias_outputlayer.csv";
 
-			// Saves in one file
             using (StreamWriter streamWriter = new StreamWriter(path + dataFile)) 
 			{
                 // saving the weights of the input layer
@@ -244,7 +246,7 @@ namespace Backpropagation
                         streamWriter.WriteLine(inputNeurons[x].getWeight(y));
                     }
                 }
-            }// end of streamwriter
+            }
 
             using (StreamWriter streamWriter = new StreamWriter(path + weightsHiddenFile))
             {
@@ -256,7 +258,7 @@ namespace Backpropagation
                         streamWriter.WriteLine(hiddenNeurons[x].getWeight(y));
                     }
                 }
-            }// end of streamwriter
+            }
 
             using (StreamWriter streamWriter = new StreamWriter(path + biasHiddenFile))
             {
@@ -265,7 +267,7 @@ namespace Backpropagation
                 {
                     streamWriter.WriteLine(hiddenNeurons[x].getBias());
                 }
-            }// end of streamwriter
+            }
 
             using (StreamWriter streamWriter = new StreamWriter(path + biasOutputFile))
             {
@@ -274,7 +276,7 @@ namespace Backpropagation
                 {
                     streamWriter.WriteLine(outputNeurons[x].getBias());
                 }
-            }// end of streamwriter
+            }
         }
 
 		public void loadWeights(String path)

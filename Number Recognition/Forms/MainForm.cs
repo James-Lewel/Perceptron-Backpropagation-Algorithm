@@ -216,6 +216,7 @@ namespace Number_Recognition
             string fileName = "data.csv";
 
             neuralNet.loadWeights(basePath + folderName + fileName);
+            MessageBox.Show("Data Imported");
         }
 
         private void exportButton_Click(object sender, EventArgs e)
@@ -226,6 +227,7 @@ namespace Number_Recognition
             string folderName = "\\Data\\";
 
             neuralNet.saveWeights(basePath + folderName);
+            MessageBox.Show("Data Exported");
         }
     }
 }
