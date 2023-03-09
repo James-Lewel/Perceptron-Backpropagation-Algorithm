@@ -235,6 +235,7 @@
             this.createButton.TabIndex = 0;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // importButton
             // 
@@ -255,6 +256,7 @@
             this.trainButton.TabIndex = 0;
             this.trainButton.Text = "Train";
             this.trainButton.UseVisualStyleBackColor = true;
+            this.trainButton.Click += new System.EventHandler(this.trainButton_Click);
             // 
             // testButton
             // 
@@ -265,6 +267,7 @@
             this.testButton.TabIndex = 0;
             this.testButton.Text = "Test";
             this.testButton.UseVisualStyleBackColor = true;
+            this.testButton.Click += new System.EventHandler(this.testButton_Click);
             // 
             // exportButton
             // 

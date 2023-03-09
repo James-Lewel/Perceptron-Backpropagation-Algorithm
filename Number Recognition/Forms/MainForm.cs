@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Backpropagation;
+using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -42,13 +44,12 @@ namespace Number_Recognition
                         graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
                         graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
 
-                        // Draws new image
                         graphics.DrawImage(originalBitmap, 0, 0, newWidth, newHeight);
                     }
 
+                    // Sets image to picture box
                     samplePictureBox.Image = sampleBitmap;
 
-                    // Enables remove button
                     removeButton.Enabled = true;
                 }
             }
@@ -111,16 +112,16 @@ namespace Number_Recognition
 
                 iterationButton.Text = input;
             }
-            catch(FormatException)
+            // Error message if input is non-integer
+            catch (FormatException)
             {
-                // Error message if input is non-integer
                 MessageBox.Show("Input must be an integer!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void decrementButton_Click(object sender, EventArgs e)
         {
-            // Set minimum limit to zero
+            // Set minimum training limit to zero
             if (int.Parse(iterationButton.Text) <= 1)
             {
                 if (int.Parse(iterationButton.Text) <= 2)
@@ -143,6 +144,58 @@ namespace Number_Recognition
             {
                 decrementButton.Enabled = true;
             }
+        }
+
+        NeuralNet neuralNet;
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+            var input = originalBitmap.Height * originalBitmap.Width;
+            neuralNet =  new NeuralNet(input, 16, 10);
+        }
+
+        int[,] num = new int[7, 5];
+        private void trainButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < originalBitmap.Height; i++)
+            {
+                for (int j = 0; j < originalBitmap.Width; j++)
+                {
+                    num[i, j] = originalBitmap.GetPixel(j, i).ToArgb();
+                }
+            }
+
+            new Thread(()=>
+            {
+                while (int.Parse(iterationButton.Text) - 1 > 0)
+                {
+                    for (int i = 0; i < originalBitmap.Height; i++)
+                    {
+                        for (int j = 0; j < originalBitmap.Width; j++)
+                        {
+                            neuralNet.setInputs(j, num[i,j]);
+                        }
+                    }
+                }
+
+                MessageBox.Show("Finish");
+            }).Start();
+
+            neuralNet.setDesiredOutput(0, 9);
+            neuralNet.learn();
+        }
+
+        private void testButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < originalBitmap.Height; i++)
+            {
+                for (int j = 0; j < originalBitmap.Width; j++)
+                {
+                    neuralNet.setInputs(j, num[i, j]);
+                }
+            }
+            neuralNet.run();
+            outputLabel.Text = "Output : " + neuralNet.getOuputData(0);
         }
     }
 }
