@@ -1,6 +1,7 @@
 ﻿using Backpropagation;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -12,10 +13,15 @@ namespace Number_Recognition
         Bitmap originalBitmap;
         Bitmap sampleBitmap;
 
+        int height = 0;
+        int width = 0;
+
         public mainForm()
         {
             InitializeComponent();
         }
+
+        int[,] num = new int[7, 5];
 
         private void addButton_Click(object sender, EventArgs e)
         {
@@ -31,9 +37,12 @@ namespace Number_Recognition
                     originalBitmap = new Bitmap(openFileDialog.FileName);
 
                     // Calculates ratio, height and weight of image
-                    double ratio = (double) samplePictureBox.Height / originalBitmap.Height;
-                    int newWidth = (int) (originalBitmap.Width * ratio);
-                    int newHeight = (int) (originalBitmap.Height * ratio);
+                    height = originalBitmap.Height;
+                    width = originalBitmap.Width;
+
+                    double ratio = (double) samplePictureBox.Height / height;
+                    int newHeight = (int)(height * ratio);
+                    int newWidth = (int) (width * ratio);
                     
                     sampleBitmap = new Bitmap(newWidth, newHeight);
 
@@ -51,6 +60,14 @@ namespace Number_Recognition
                     samplePictureBox.Image = sampleBitmap;
 
                     removeButton.Enabled = true;
+
+                    for (int i = 0; i < height; i++)
+                    {
+                        for (int j = 0; j < width; j++)
+                        {
+                            num[i, j] = originalBitmap.GetPixel(j, i).ToArgb() < -1 ? 1 : 0;
+                        }
+                    }
                 }
             }
         }
@@ -150,28 +167,20 @@ namespace Number_Recognition
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            var input = originalBitmap.Height * originalBitmap.Width;
+            var input = height * width;
             neuralNet =  new NeuralNet(input, 16, 10);
+
         }
 
-        int[,] num = new int[7, 5];
         private void trainButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < originalBitmap.Height; i++)
-            {
-                for (int j = 0; j < originalBitmap.Width; j++)
-                {
-                    num[i, j] = originalBitmap.GetPixel(j, i).ToArgb();
-                }
-            }
-
             new Thread(()=>
             {
                 while (int.Parse(iterationButton.Text) - 1 > 0)
                 {
-                    for (int i = 0; i < originalBitmap.Height; i++)
+                    for (int i = 0; i < height; i++)
                     {
-                        for (int j = 0; j < originalBitmap.Width; j++)
+                        for (int j = 0; j < width; j++)
                         {
                             neuralNet.setInputs(j, num[i,j]);
                         }
@@ -187,15 +196,31 @@ namespace Number_Recognition
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < originalBitmap.Height; i++)
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < originalBitmap.Width; j++)
+                for (int j = 0; j < width; j++)
                 {
                     neuralNet.setInputs(j, num[i, j]);
                 }
             }
             neuralNet.run();
             outputLabel.Text = "Output : " + neuralNet.getOuputData(0);
+        }
+
+        private void importButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        { 
+            // Get base directory
+            var basePath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
+            MessageBox.Show(basePath);
+            string folderName = "\\Data\\";
+            string fileName = "data.csv";
+
+            neuralNet.saveWeights(basePath + folderName + fileName);
         }
     }
 }

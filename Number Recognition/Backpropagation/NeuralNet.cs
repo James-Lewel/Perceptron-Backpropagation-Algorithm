@@ -99,7 +99,7 @@ namespace Backpropagation
 					summation += inputNeurons[y].getInput() * inputNeurons[y].getWeight(x);
 				}
 				hiddenNeurons[x].setHiddenActivation(sigmoid(summation + hiddenNeurons[x].getBias()));
-                //hiddenNeurons[x].setHactivation(sigmoid(summation));
+                //hiddenNeurons[x].setHiddenActivation(sigmoid(summation));
             }
         }
 
@@ -114,7 +114,7 @@ namespace Backpropagation
 					summation += hiddenNeurons[y].getHiddenActivation() * hiddenNeurons[y].getWeight(x);
 				}
 				outputNeurons[x].setOutputActivation(sigmoid(summation + outputNeurons[x].getBias()));
-                //outputNeurons[x].setOActivation(sigmoid(summation));
+                //outputNeurons[x].setOutputActivation(sigmoid(summation));
             }
         }
 		public void calculateErrorComponents()
@@ -193,8 +193,8 @@ namespace Backpropagation
 			return result;
 		}
 		public void saveWeights(String path)
-		{
-			using (StreamWriter streamWriter = new StreamWriter(path)) 
+        {
+            using (StreamWriter streamWriter = new StreamWriter(path)) 
 			{
                 // saving the weights of the input layer
                 for (int x = 0; x < inputNeurons.Length; x++)

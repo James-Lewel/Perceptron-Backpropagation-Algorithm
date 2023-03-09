@@ -29,31 +29,7 @@ namespace Backpropagation
 			weights = new double[weightSize];
 			setRandomWeights(weightSize);
 		}
-		private double randomweight()
-		{
-			/*DateTime x=DateTime.Now;
-			Random rnd=new Random((int)x.Millisecond);
-			num+=(int)(rnd.Next()%100.00);
-			return 2*((float)(num/100.00));
-			
-			Random y=new Random();
-			double x=(double)y.Next(-10,10);
-			Console.WriteLine("at hidden {0} = {1}", this.idno,x);
-			return x;*/
-			
-			if(random == null)
-			{
-				random = new Random();
-			}
-                
-			int MaxLimit = + 1000; 
-                
-			int MinLimit = - 1000; 
 
-			double number = (double) (random.Next(MinLimit, MaxLimit)) / 2000;
-                
-			return number; 
-		}
         public int getId()
         {
             return id;
@@ -93,9 +69,35 @@ namespace Backpropagation
         {
             for (int x = 0; x < size; x++)
             {
-                weights[x] = randomweight();
+                weights[x] = randomWeight();
             }
 
+        }
+
+        private double randomWeight()
+        {
+            /*DateTime x=DateTime.Now;
+			Random rnd=new Random((int)x.Millisecond);
+			num+=(int)(rnd.Next()%100.00);
+			return 2*((float)(num/100.00));
+			
+			Random y=new Random();
+			double x=(double)y.Next(-10,10);
+			Console.WriteLine("at hidden {0} = {1}", this.idno,x);
+			return x;*/
+
+            if (random == null)
+            {
+                random = new Random();
+            }
+
+            int MaxLimit = +1000;
+
+            int MinLimit = -1000;
+
+            double number = (double)(random.Next(MinLimit, MaxLimit)) / 2000;
+
+            return number;
         }
     }// end of class INEURON
 }
