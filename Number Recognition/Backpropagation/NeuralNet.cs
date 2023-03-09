@@ -280,9 +280,10 @@ namespace Backpropagation
                     }
                 }
             }
+            #endregion
         }
 
-		public void loadWeights(String path)
+        public void loadWeights(String path)
 		{
 			using (StreamReader sr = new StreamReader(path)) 
 			{
