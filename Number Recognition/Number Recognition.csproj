@@ -47,10 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backpropagation\BackNeural.cs" />
-    <Compile Include="Backpropagation\HiddenN.cs" />
-    <Compile Include="Backpropagation\InputN.cs" />
-    <Compile Include="Backpropagation\OuputN.cs" />
+    <Compile Include="Backpropagation\NeuralNet.cs" />
+    <Compile Include="Backpropagation\HNeuron.cs" />
+    <Compile Include="Backpropagation\INeuron.cs" />
+    <Compile Include="Backpropagation\ONeuron.cs" />
     <Compile Include="Forms\InputForm.cs">
       <SubType>Form</SubType>
     </Compile>
