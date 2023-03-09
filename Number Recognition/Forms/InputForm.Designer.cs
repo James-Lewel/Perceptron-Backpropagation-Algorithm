@@ -32,8 +32,8 @@
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.maxTrainingLabel = new System.Windows.Forms.Label();
             this.inputTextBox = new System.Windows.Forms.TextBox();
-            this.confirmButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.confirmButton = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -77,18 +77,6 @@
             this.inputTextBox.Size = new System.Drawing.Size(196, 22);
             this.inputTextBox.TabIndex = 1;
             // 
-            // confirmButton
-            // 
-            this.confirmButton.BackColor = System.Drawing.SystemColors.Control;
-            this.confirmButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.confirmButton.Location = new System.Drawing.Point(95, 74);
-            this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(90, 23);
-            this.confirmButton.TabIndex = 0;
-            this.confirmButton.Text = "Confirm";
-            this.confirmButton.UseVisualStyleBackColor = false;
-            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
-            // 
             // cancelButton
             // 
             this.cancelButton.BackColor = System.Drawing.SystemColors.Control;
@@ -101,11 +89,23 @@
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // confirmButton
+            // 
+            this.confirmButton.BackColor = System.Drawing.SystemColors.Control;
+            this.confirmButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.confirmButton.Location = new System.Drawing.Point(95, 74);
+            this.confirmButton.Name = "confirmButton";
+            this.confirmButton.Size = new System.Drawing.Size(90, 23);
+            this.confirmButton.TabIndex = 0;
+            this.confirmButton.Text = "Confirm";
+            this.confirmButton.UseVisualStyleBackColor = false;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
+            // 
             // InputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(332, 153);
             this.Controls.Add(this.panel);
             this.Name = "InputForm";

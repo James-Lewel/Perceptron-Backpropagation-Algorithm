@@ -54,7 +54,7 @@
             this.stripeMaroon2 = new System.Windows.Forms.PictureBox();
             this.stripeMaroon3 = new System.Windows.Forms.PictureBox();
             this.borderMaroon2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.titleLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.samplePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.borderMaroon1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -99,6 +99,7 @@
             this.samplePictureBox.Location = new System.Drawing.Point(22, 21);
             this.samplePictureBox.Name = "samplePictureBox";
             this.samplePictureBox.Size = new System.Drawing.Size(246, 246);
+            this.samplePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.samplePictureBox.TabIndex = 2;
             this.samplePictureBox.TabStop = false;
             // 
@@ -354,16 +355,18 @@
             this.borderMaroon2.TabIndex = 2;
             this.borderMaroon2.TabStop = false;
             // 
-            // label2
+            // titleLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("OCR A Extended", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(311, 297);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(393, 35);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Number Recognition";
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.titleLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.titleLabel.Font = new System.Drawing.Font("OCR A Extended", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(298, 294);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(395, 37);
+            this.titleLabel.TabIndex = 5;
+            this.titleLabel.Text = "Number Recognition";
             // 
             // mainForm
             // 
@@ -371,7 +374,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Goldenrod;
             this.ClientSize = new System.Drawing.Size(732, 403);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.samplePictureBox);
@@ -434,7 +437,7 @@
         private System.Windows.Forms.PictureBox stripeMaroon2;
         private System.Windows.Forms.PictureBox stripeMaroon3;
         private System.Windows.Forms.PictureBox borderMaroon2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label titleLabel;
     }
 }
 
