@@ -194,7 +194,14 @@ namespace Backpropagation
 		}
 		public void saveWeights(String path)
         {
-            using (StreamWriter streamWriter = new StreamWriter(path)) 
+			string dataFile = "data.csv";
+			string weightsInputFile = "weights_inputlayer.csv";
+			string weightsHiddenFile = "weights_hiddenlayer.csv";
+			string biasHiddenFile = "bias_hiddenlayer.csv";
+			string biasOutputFile = "bias_outputlayer.csv";
+
+			// Saves in one file
+            using (StreamWriter streamWriter = new StreamWriter(path + dataFile)) 
 			{
                 // saving the weights of the input layer
                 for (int x = 0; x < inputNeurons.Length; x++)
@@ -205,7 +212,7 @@ namespace Backpropagation
                     }
 				}
 
-                //saving the wieghts of the hidden layer
+                //saving the weights of the hidden layer
                 for (int x = 0; x < hiddenNeurons.Length; x++)
 				{
 					for (int y = 0; y < outputNeurons.Length; y++)
@@ -226,7 +233,49 @@ namespace Backpropagation
 					streamWriter.WriteLine(outputNeurons[x].getBias());
 				}
 			}// end of streamwriter
-		}
+
+            using (StreamWriter streamWriter = new StreamWriter(path + weightsInputFile))
+            {
+                // saving the weights of the input layer
+                for (int x = 0; x < inputNeurons.Length; x++)
+                {
+                    for (int y = 0; y < hiddenNeurons.Length; y++)
+                    {
+                        streamWriter.WriteLine(inputNeurons[x].getWeight(y));
+                    }
+                }
+            }// end of streamwriter
+
+            using (StreamWriter streamWriter = new StreamWriter(path + weightsHiddenFile))
+            {
+                //saving the wieghts of the hidden layer
+                for (int x = 0; x < hiddenNeurons.Length; x++)
+                {
+                    for (int y = 0; y < outputNeurons.Length; y++)
+                    {
+                        streamWriter.WriteLine(hiddenNeurons[x].getWeight(y));
+                    }
+                }
+            }// end of streamwriter
+
+            using (StreamWriter streamWriter = new StreamWriter(path + biasHiddenFile))
+            {
+                // saving hidden layer bias
+                for (int x = 0; x < hiddenNeurons.Length; x++)
+                {
+                    streamWriter.WriteLine(hiddenNeurons[x].getBias());
+                }
+            }// end of streamwriter
+
+            using (StreamWriter streamWriter = new StreamWriter(path + biasOutputFile))
+            {
+                // saving output layer bias
+                for (int x = 0; x < outputNeurons.Length; x++)
+                {
+                    streamWriter.WriteLine(outputNeurons[x].getBias());
+                }
+            }// end of streamwriter
+        }
 
 		public void loadWeights(String path)
 		{

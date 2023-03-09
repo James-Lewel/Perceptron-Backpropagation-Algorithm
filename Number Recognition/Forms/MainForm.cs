@@ -209,18 +209,23 @@ namespace Number_Recognition
 
         private void importButton_Click(object sender, EventArgs e)
         {
+            // Get base directory
+            var basePath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
 
+            string folderName = "\\Data\\";
+            string fileName = "data.csv";
+
+            neuralNet.loadWeights(basePath + folderName + fileName);
         }
 
         private void exportButton_Click(object sender, EventArgs e)
         { 
             // Get base directory
             var basePath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
-            MessageBox.Show(basePath);
+            
             string folderName = "\\Data\\";
-            string fileName = "data.csv";
 
-            neuralNet.saveWeights(basePath + folderName + fileName);
+            neuralNet.saveWeights(basePath + folderName);
         }
     }
 }
