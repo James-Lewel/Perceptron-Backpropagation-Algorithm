@@ -82,6 +82,7 @@
             // 
             // removeButton
             // 
+            this.removeButton.Enabled = false;
             this.removeButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.removeButton.Location = new System.Drawing.Point(91, 21);
             this.removeButton.Name = "removeButton";
@@ -99,7 +100,7 @@
             this.samplePictureBox.Location = new System.Drawing.Point(22, 21);
             this.samplePictureBox.Name = "samplePictureBox";
             this.samplePictureBox.Size = new System.Drawing.Size(246, 246);
-            this.samplePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.samplePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.samplePictureBox.TabIndex = 2;
             this.samplePictureBox.TabStop = false;
             // 
@@ -122,7 +123,7 @@
             this.resetButton.TabIndex = 1;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.removeButton_Click);
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // groupBox1
             // 
@@ -359,12 +360,11 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.titleLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.titleLabel.Font = new System.Drawing.Font("OCR A Extended", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.Location = new System.Drawing.Point(298, 294);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(395, 37);
+            this.titleLabel.Size = new System.Drawing.Size(393, 35);
             this.titleLabel.TabIndex = 5;
             this.titleLabel.Text = "Number Recognition";
             // 
