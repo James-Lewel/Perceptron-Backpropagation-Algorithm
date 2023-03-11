@@ -1,8 +1,11 @@
 ﻿using Backpropagation;
+using Number_Recognition.Helpers;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Number_Recognition
@@ -12,15 +15,15 @@ namespace Number_Recognition
         Bitmap originalBitmap;
         Bitmap sampleBitmap;
 
-        int height = 0;
-        int width = 0;
+        int height = 28;
+        int width = 28;
 
         public mainForm()
         {
             InitializeComponent();
         }
 
-        int[,] num = new int[7, 5];
+        int[,] num = new int[28, 28];
 
         private void addButton_Click(object sender, EventArgs e)
         {
@@ -168,12 +171,56 @@ namespace Number_Recognition
         {
             var input = height * width;
             neuralNet =  new NeuralNet(input, 16, 10);
-
         }
 
         private void trainButton_Click(object sender, EventArgs e)
         {
-            new Thread(()=>
+            // Get base directory
+            var basePath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
+
+            string folderName = "\\Data\\";
+
+            var trainingData = MnistReader.ReadTrainingData(basePath + folderName);
+            int trainingLimit = int.Parse(iterationButton.Text);
+
+            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.MarqueeAnimationSpeed = 100;
+
+            var thread = new Thread(() =>
+            {
+                foreach (var image in trainingData)
+                {
+                    for (int i = 0; i < trainingLimit; i++)
+                    {
+                        for (int j = 0; j < height; j++)
+                        {
+                            for (int k = 0; k < width; k++)
+                            {
+                                int color = image.Data[j, k] == 0 ? 0 : 1;
+                                neuralNet.setInputs(j * width + k, color);
+                            }
+                        }
+                        neuralNet.setDesiredOutput(0, image.Label);
+                        neuralNet.learn();
+                    }
+                }
+
+                MessageBox.Show("Training Finish");
+            });
+
+            thread.Start();
+
+            Task.Run(() =>
+            {
+                thread.Join();
+                progressBar.Invoke((MethodInvoker)(() =>
+                {
+                    progressBar.Style = ProgressBarStyle.Blocks;
+                    progressBar.MarqueeAnimationSpeed = 0;
+                }));
+            });
+
+            /*new Thread(()=>
             {
                 int trainingLimit = int.Parse(iterationButton.Text);
                 for(int i = 0; i < trainingLimit; i++)
@@ -188,49 +235,53 @@ namespace Number_Recognition
                 }
 
                 MessageBox.Show("Finish");
-            }).Start();
+            }).Start();*/
 
-            if (isZero(num))
-            {
-                neuralNet.setDesiredOutput(0, 5);
-            }
-            else if(isOne(num))
-            {
-                neuralNet.setDesiredOutput(1, 5);
-            }
-            else if (isTwo(num))
-            {
-                neuralNet.setDesiredOutput(2, 5);
-            }
-            else if (isThree(num))
-            {
-                neuralNet.setDesiredOutput(3, 5);
-            }
-            else if (isFour(num))
-            {
-                neuralNet.setDesiredOutput(4, 5);
-            }
-            else if (isFive(num))
-            {
-                neuralNet.setDesiredOutput(5, 5);
-            }
-            else if (isSix(num))
-            {
-                neuralNet.setDesiredOutput(6, 5);
-            }
-            else if (isSeven(num))
-            {
-                neuralNet.setDesiredOutput(7, 5);
-            }
-            else if (isEight(num))
-            {
-                neuralNet.setDesiredOutput(8, 5);
-            }
-            else
-            {
-                neuralNet.setDesiredOutput(9, 5);
-            }
-            neuralNet.learn();
+            #region temporary
+            /*
+                if (isZero(num))
+                {
+                    neuralNet.setDesiredOutput(0, 5);
+                }
+                else if (isOne(num))
+                {
+                    neuralNet.setDesiredOutput(1, 5);
+                }
+                else if (isTwo(num))
+                {
+                    neuralNet.setDesiredOutput(2, 5);
+                }
+                else if (isThree(num))
+                {
+                    neuralNet.setDesiredOutput(3, 5);
+                }
+                else if (isFour(num))
+                {
+                    neuralNet.setDesiredOutput(4, 5);
+                }
+                else if (isFive(num))
+                {
+                    neuralNet.setDesiredOutput(5, 5);
+                }
+                else if (isSix(num))
+                {
+                    neuralNet.setDesiredOutput(6, 5);
+                }
+                else if (isSeven(num))
+                {
+                    neuralNet.setDesiredOutput(7, 5);
+                }
+                else if (isEight(num))
+                {
+                    neuralNet.setDesiredOutput(8, 5);
+                }
+                else
+                {
+                    neuralNet.setDesiredOutput(9, 5);
+                }
+                
+            */
+            #endregion
         }
 
         private void testButton_Click(object sender, EventArgs e)
@@ -239,12 +290,12 @@ namespace Number_Recognition
             {
                 for (int j = 0; j < width; j++)
                 {
-                    neuralNet.setInputs(j, num[i, j]);
+                    neuralNet.setInputs(i * width + j, num[i, j]);
                 }
             }
             neuralNet.run();
 
-            double max = 0;
+            /*double max = 0;
             int index = 0;
 
             for(int i = 0; i < 10; i++)
@@ -254,9 +305,18 @@ namespace Number_Recognition
                     max = neuralNet.getOuputData(i);
                     index = i;
                 }
+            }*/
+
+            double predict = 1;
+
+            for (int i = 0; i < 10; i++)
+            {
+                predict *= neuralNet.getOuputData(i);
             }
 
-            outputLabel.Text = "Output : " + index; //neuralNet.getOuputData(index);
+
+            outputLabel.Text = "Output : " + (predict);
+
         }
 
         private void importButton_Click(object sender, EventArgs e)
@@ -282,7 +342,8 @@ namespace Number_Recognition
             MessageBox.Show("Data Exported");
         }
 
-        public bool isZero(int [,] input)
+        #region temporary
+        public bool isZero(int[,] input)
         {
             int counter = 0;
             int[,] zero = new int[,]
@@ -310,7 +371,6 @@ namespace Number_Recognition
             }
             return true;
         }
-
         public bool isOne(int[,] input)
         {
             int counter = 0;
@@ -339,7 +399,6 @@ namespace Number_Recognition
             }
             return true;
         }
-
         public bool isTwo(int[,] input)
         {
             int counter = 0;
@@ -368,7 +427,6 @@ namespace Number_Recognition
             }
             return true;
         }
-
         public bool isThree(int[,] input)
         {
             int counter = 0;
@@ -397,7 +455,6 @@ namespace Number_Recognition
             }
             return true;
         }
-
         public bool isFour(int[,] input)
         {
             int counter = 0;
@@ -426,7 +483,6 @@ namespace Number_Recognition
             }
             return true;
         }
-
         public bool isFive(int[,] input)
         {
             int counter = 0;
@@ -455,7 +511,6 @@ namespace Number_Recognition
             }
             return true;
         }
-
         public bool isSix(int[,] input)
         {
             int counter = 0;
@@ -484,7 +539,6 @@ namespace Number_Recognition
             }
             return true;
         }
-
         public bool isSeven(int[,] input)
         {
             int counter = 0;
@@ -513,7 +567,6 @@ namespace Number_Recognition
             }
             return true;
         }
-
         public bool isEight(int[,] input)
         {
             int counter = 0;
@@ -542,9 +595,6 @@ namespace Number_Recognition
             }
             return true;
         }
-
-
-
         public bool isNine(int[,] input)
         {
             int counter = 0;
@@ -574,6 +624,6 @@ namespace Number_Recognition
             return true;
         }
 
-       
+        #endregion
     }
 }

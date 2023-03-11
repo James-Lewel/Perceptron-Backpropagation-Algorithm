@@ -55,6 +55,9 @@
             this.stripeMaroon3 = new System.Windows.Forms.PictureBox();
             this.borderMaroon2 = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.samplePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.borderMaroon1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -155,6 +158,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.iterationButton);
             this.panel1.Controls.Add(this.incrementButton);
             this.panel1.Controls.Add(this.decrementButton);
@@ -373,12 +377,40 @@
             this.titleLabel.TabIndex = 5;
             this.titleLabel.Text = "Number Recognition";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 401);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(732, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(551, 407);
+            this.progressBar.MarqueeAnimationSpeed = 0;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(150, 15);
+            this.progressBar.Step = 0;
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(135, 46);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(246, 37);
+            this.panel2.TabIndex = 6;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Goldenrod;
-            this.ClientSize = new System.Drawing.Size(732, 403);
+            this.ClientSize = new System.Drawing.Size(732, 423);
+            this.Controls.Add(this.progressBar);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -391,8 +423,8 @@
             this.Controls.Add(this.stripeMaroon3);
             this.Controls.Add(this.stripeMaroon1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(750, 450);
-            this.MinimumSize = new System.Drawing.Size(750, 450);
+            this.MaximumSize = new System.Drawing.Size(750, 470);
+            this.MinimumSize = new System.Drawing.Size(750, 470);
             this.Name = "mainForm";
             this.Text = "Easter Egg 🥚";
             ((System.ComponentModel.ISupportInitialize)(this.samplePictureBox)).EndInit();
@@ -443,6 +475,9 @@
         private System.Windows.Forms.PictureBox stripeMaroon3;
         private System.Windows.Forms.PictureBox borderMaroon2;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
