@@ -36,6 +36,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.iterationButton = new System.Windows.Forms.Button();
             this.incrementButton = new System.Windows.Forms.Button();
             this.decrementButton = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.titleLabel = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.samplePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.borderMaroon1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -169,6 +169,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(388, 224);
             this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(79, 46);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(302, 37);
+            this.panel2.TabIndex = 6;
             // 
             // iterationButton
             // 
@@ -395,13 +402,6 @@
             this.progressBar.Step = 0;
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(135, 46);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(246, 37);
-            this.panel2.TabIndex = 6;
             // 
             // mainForm
             // 
